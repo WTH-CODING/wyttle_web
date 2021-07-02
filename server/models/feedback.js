@@ -11,7 +11,7 @@ const feedbackSchema = mongoose.Schema(
       type: Number,
     },
     user: {
-      type: mongoose.SchemaTypes.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     upvote: {
