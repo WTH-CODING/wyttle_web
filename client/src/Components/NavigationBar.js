@@ -40,7 +40,7 @@ function NavigationBar() {
               border: "none",
             }}
           >
-            <i className="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i><sup style={{color:"red"}}>&nbsp;0</sup>
           </button>
         </div>
       </div>
