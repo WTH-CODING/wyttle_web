@@ -2,9 +2,11 @@ import React from "react";
 import logo from "../../Assets/Logo.jpeg";
 import { Link, withRouter } from "react-router-dom";
 
-function NavigationBar() {
-  return (
-    <div
+function NavigationBar() { 
+
+  const renderer = () =>{
+    if(window.location.pathname !== "/login"){
+      return(<div id="navbar"
       className="row"
       style={{ background: "rgba(219, 230, 234, 0.9)", height: "6.3rem" }}
     >
@@ -46,8 +48,16 @@ function NavigationBar() {
           <i className="fas fa-shopping-cart"></i>
         </button>
       </div>
-    </div>
-  );
+    </div>)
+    }
+    else{
+      return null;
+    }
+  }
+  return(
+    renderer()
+  )
+  
 }
 
 export default withRouter(NavigationBar);

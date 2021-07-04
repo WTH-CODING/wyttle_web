@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 import Navigation from "./Components/Layout/NavigationBar";
 import ProductPage from "./Components/Pages/ProductPage";
 import FeedBack from "./Components/Pages/FeedBackPage";
@@ -17,8 +17,9 @@ function App() {
           <Route path="/leaderboard" exact component={FeedBack} />
           <Route path="/login" exact component={Login} />
         </Switch>
+        <Footer />
       </BrowserRouter>
-      <Footer />
+      
     </div>
   );
 }
