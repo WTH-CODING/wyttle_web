@@ -1,5 +1,5 @@
 import React from 'react'
-import p1 from '../Assets/p1.jpg'
+import p1 from '../../Assets/p1.jpg'
 
 function ProductTopReviewCard() {
     return (
