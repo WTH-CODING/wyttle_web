@@ -35,7 +35,7 @@ function NavigationBar() {
         <Link to="/login">
           <button className="rbtn">Login</button>
         </Link>
-
+        <Link to="/cart">
         <button
           style={{
             float: "right",
@@ -45,8 +45,9 @@ function NavigationBar() {
             border: "none",
           }}
         >
-          <i className="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i><sup style={{color: "red"}}>50</sup>
         </button>
+        </Link>
       </div>
     </div>)
     }
