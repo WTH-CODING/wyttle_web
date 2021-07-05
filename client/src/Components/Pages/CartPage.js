@@ -7,7 +7,7 @@ function CartPage() {
         <div className="row mt-3">
         <h1 style={{fontFamily: "Poppins", fontSize: "2.5rem", fontWeight:"700", marginLeft: "1.5rem", color: "#6a6a6a"}}>Shopping Cart</h1>
         </div>
-        <div class="row">
+        <div className="row">
             <div className="col-md-6 p-5">
             <div className="row mt-3">
                 <div className="col-md-6">
