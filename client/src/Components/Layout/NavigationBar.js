@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../Assets/Logo.jpeg";
+import logo from "../../Assets/logo.png";
 import { Link, withRouter } from "react-router-dom";
 
 function NavigationBar() {
