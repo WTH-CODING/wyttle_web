@@ -7,6 +7,7 @@ import HomePage from "./Components/Pages/HomePage";
 import Footer from "./Components/Layout/Footer";
 import Login from "./Components/User/Login";
 import CartPage from "./Components/Pages/CartPage";
+import PointRedeemPage from "./Components/Pages/PointRedeemPage";
 function App() {
   return (
     <div>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/leaderboard" exact component={FeedBack} />
           <Route path="/login" exact component={Login} />
           <Route path="/cart" exact component={CartPage} />
+          <Route path="/redeem" exact component={PointRedeemPage} />
         </Switch>
         <Footer />
       </BrowserRouter>
