@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../Assets/logo.png";
+
 import { Link, withRouter } from "react-router-dom";
+import CartContext from "../../store/cart-context";
 
 function NavigationBar() {
+  const cartCtx = useContext(CartContext);
+  const noOfItems = cartCtx.items.length;
   const renderer = () => {
     if (
       window.location.pathname !== "/login" &&
@@ -49,7 +53,7 @@ function NavigationBar() {
                 }}
               >
                 <i className="fas fa-shopping-cart"></i>
-                <sup style={{ color: "red" }}>50</sup>
+                <sup style={{ color: "red" }}>{noOfItems}</sup>
               </button>
             </Link>
           </div>
