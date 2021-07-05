@@ -10,7 +10,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from "../../Assets/Logo.jpeg";
+import logo from "../../Assets/logo.png";
 import wallpaper from "../../Assets/undraw_authentication_fsn5.svg";
 import useInput from "../../hooks/use-input";
 
