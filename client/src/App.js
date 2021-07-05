@@ -8,6 +8,7 @@ import Footer from "./Components/Layout/Footer";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import CartPage from "./Components/Pages/CartPage";
+import PointRedeemPage from "./Components/Pages/PointRedeemPage";
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Register} />
           <Route path="/cart" exact component={CartPage} />
+          <Route path="/redeem" exact component={PointRedeemPage} />
         </Switch>
         <Footer />
       </BrowserRouter>
