@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import logo from "../../Assets/Logo.jpeg";
+import useInput from "../../hooks/use-input";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -47,13 +48,66 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const Register = () => {
   const classes = useStyles();
+  const {
+    value: enteredName,
+    enteredValueIsValid: enteredNameIsValid,
+    enteredValueHasError: nameInputHasError,
+    valueChangeHandler: nameInputChangeHandler,
+    valueInputBlurHandler: nameInputBlurHandler,
+    reset: nameReset,
+  } = useInput((value) => {
+    return value.trim() !== "";
+  });
+
+  const {
+    value: enteredEmail,
+    enteredValueIsValid: enteredEmailIsValid,
+    enteredValueHasError: emailInputHasError,
+    valueChangeHandler: emailInputChangeHandler,
+    valueInputBlurHandler: emailInputBlurHandler,
+    reset: emailReset,
+  } = useInput((value) => {
+    return value.includes("@");
+  });
+
+  const {
+    value: enteredPassword,
+    enteredValueIsValid: enteredPasswordIsValid,
+    enteredValueHasError: passwordInputHasError,
+    valueChangeHandler: passwordInputChangeHandler,
+    valueInputBlurHandler: passwordInputBlurHandler,
+    reset: passwordReset,
+  } = useInput((value) => {
+    return value.trim() !== "";
+  });
+
+  let formIsValid = false;
+
+  if (enteredPasswordIsValid && enteredEmailIsValid && enteredNameIsValid) {
+    formIsValid = true;
+  }
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
+    console.log(enteredEmail);
+    emailReset();
+    passwordReset();
+    nameReset();
+  };
+  const nameInputClasses =
+    passwordInputHasError || emailInputHasError || nameInputHasError
+      ? "form-control invalid"
+      : "form-control";
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={[classes.paper, { nameInputClasses }].join(" ")}>
         <img
           src={logo}
           alt=""
@@ -62,7 +116,11 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          onSubmit={formSubmissionHandler}
+          noValidate
+        >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -72,8 +130,14 @@ export default function SignUp() {
                 id="name"
                 label="Full Name"
                 name="name"
+                onChange={nameInputChangeHandler}
+                onBlur={nameInputBlurHandler}
+                value={enteredName}
                 autoComplete="name"
               />
+              {nameInputHasError && (
+                <p className="error-text">Name should not be empty</p>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -83,8 +147,14 @@ export default function SignUp() {
                 id="email"
                 label="Email Address"
                 name="email"
+                onChange={emailInputChangeHandler}
+                onBlur={emailInputBlurHandler}
+                value={enteredEmail}
                 autoComplete="email"
               />
+              {emailInputHasError && (
+                <p className="error-text">Email Not Valid</p>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -95,8 +165,14 @@ export default function SignUp() {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={passwordInputChangeHandler}
+                onBlur={passwordInputBlurHandler}
+                value={enteredPassword}
                 autoComplete="current-password"
               />
+              {passwordInputHasError && (
+                <p className="error-text">Password should not be empty</p>
+              )}
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
@@ -128,4 +204,6 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+};
+
+export default Register;

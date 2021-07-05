@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../../Assets/Logo.jpeg";
 import wallpaper from "../../Assets/undraw_authentication_fsn5.svg";
+import useInput from "../../hooks/use-input";
 
 function Copyright() {
   return (
@@ -59,8 +60,49 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+const Login = (props) => {
   const classes = useStyles();
+  const {
+    value: enteredEmail,
+    enteredValueIsValid: enteredEmailIsValid,
+    enteredValueHasError: emailInputHasError,
+    valueChangeHandler: emailInputChangeHandler,
+    valueInputBlurHandler: emailInputBlurHandler,
+    reset: emailReset,
+  } = useInput((value) => {
+    return value.includes("@");
+  });
+
+  const {
+    value: enteredPassword,
+    enteredValueIsValid: enteredPasswordIsValid,
+    enteredValueHasError: passwordInputHasError,
+    valueChangeHandler: passwordInputChangeHandler,
+    valueInputBlurHandler: passwordInputBlurHandler,
+    reset: passwordReset,
+  } = useInput((value) => {
+    return value.trim() !== "";
+  });
+
+  let formIsValid = false;
+
+  if (enteredPasswordIsValid && enteredEmailIsValid) {
+    formIsValid = true;
+  }
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
+    console.log(enteredEmail);
+    emailReset();
+    passwordReset();
+  };
+  const nameInputClasses =
+    passwordInputHasError || emailInputHasError
+      ? "form-control invalid"
+      : "form-control";
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -68,7 +110,7 @@ export default function SignInSide() {
       <Grid item xs={false} sm={4} md={7} className={classes.wallImage} />
 
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
+        <div className={[classes.paper, { nameInputClasses }].join(" ")}>
           <img
             src={logo}
             alt=""
@@ -78,7 +120,11 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={formSubmissionHandler}
+          >
             <TextField
               variant="outlined"
               margin="normal"
@@ -88,8 +134,14 @@ export default function SignInSide() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={emailInputChangeHandler}
+              onBlur={emailInputBlurHandler}
+              value={enteredEmail}
               autoFocus
             />
+            {emailInputHasError && (
+              <p className="error-text">Email Not Valid</p>
+            )}
             <TextField
               variant="outlined"
               margin="normal"
@@ -100,7 +152,13 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={passwordInputChangeHandler}
+              onBlur={passwordInputBlurHandler}
+              value={enteredPassword}
             />
+            {passwordInputHasError && (
+              <p className="error-text">Password should not be empty</p>
+            )}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -134,4 +192,6 @@ export default function SignInSide() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default Login;
