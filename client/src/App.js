@@ -10,27 +10,25 @@ import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import CartPage from "./Components/Pages/CartPage";
 import PointRedeemPage from "./Components/Pages/PointRedeemPage";
-import CartProvider from "./store/CartProvider";
+
 import UserProfilePage from "./Components/Pages/UserProfilePage";
 function App() {
   return (
     <div>
-      <CartProvider>
-        <BrowserRouter>
-          <Navigation />
-          <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/product/_id" exact component={ProductPage} />
-            <Route path="/leaderboard" exact component={FeedBack} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/signup" exact component={Register} />
-            <Route path="/cart" exact component={CartPage} />
-            <Route path="/redeem" exact component={PointRedeemPage} />
-            <Route path="/user_profile" exact component={UserProfilePage} />
-          </Switch>
-          <Footer />
-        </BrowserRouter>
-      </CartProvider>
+      <BrowserRouter>
+        <Navigation />
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/product/_id" exact component={ProductPage} />
+          <Route path="/leaderboard" exact component={FeedBack} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Register} />
+          <Route path="/cart" exact component={CartPage} />
+          <Route path="/redeem" exact component={PointRedeemPage} />
+          <Route path="/user_profile" exact component={UserProfilePage} />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
