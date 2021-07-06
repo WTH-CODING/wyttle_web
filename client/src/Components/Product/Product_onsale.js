@@ -1,9 +1,13 @@
 import React from "react";
 import p1 from "../../Assets/p1.jpg";
+import {Link} from 'react-router-dom';
 
-function Product_onsale() {
+function Product_onsale({product}) {
   return (
     <>
+    
+      {product &&
+      <Link to={`/product/${product._id}`} style={{textDecoration: "none"}}>
       <div className="row mt-3" style={{ justifyContent: "center" }}>
         <div
           className="row pdos"
@@ -16,7 +20,7 @@ function Product_onsale() {
         >
           <img
             alt="p1"
-            src={p1}
+            src={product.imageurl}
             style={{
               padding: "0px",
               height: "21.05rem",
@@ -33,7 +37,7 @@ function Product_onsale() {
               paddingTop: "8px",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            {product.description}
           </p>
           <div className="offer_badge">
             <svg
@@ -51,6 +55,7 @@ function Product_onsale() {
           </div>
         </div>
       </div>
+      </Link>}
     </>
   );
 }

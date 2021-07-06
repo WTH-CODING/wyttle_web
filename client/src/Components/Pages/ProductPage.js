@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import p1 from "../../Assets/p1.jpg";
 import ProductTopReviewCard from "../Product/ProductTopReviewCard";
 import ProuctCardSmall from "../Product/ProuctCardSmall";
@@ -6,14 +6,34 @@ import ProductFeedbackCard from "../Product/ProductFeedbackCard";
 import ProgressBar from "../ProgressBar";
 import AddReviewModal from '../AddReviewModal';
 
-function ProductPage() {
+
+function ProductPage(props) {
+
+  const[product,setProduct] = useState({})
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+    const productId= props.match.params.pid
+    getProduct(productId);
+  },[])
+  const getProduct = productId => {
+    fetch(`http://20.84.89.186/api/v1/product/${productId}`)
+  .then(response => response.json())
+  .then(data => setProduct(data));
+
+  console.log("getProducts Function Called")
+  }
   return (
     <>
       <div className="row mt-3" style={{ justifyContent: "center" }}>
         {/*=========================================================== PRODUCT IMAGES ============================================ */}
 
-        <div className="col-md-6 p-3">
-          <div className="row">
+        <div className="col-md-6 p-3 text-center" style={{alignSelf: "center"}}>
+        <img
+                alt="p1"
+                src={(product && product.imageurl) || p1}
+                style={{ width: "100%", maxWidth: "300px" }}
+              ></img>
+          {/* <div className="row">
             <div className="col-md-6 p-3">
               <img
                 alt="p1"
@@ -44,7 +64,7 @@ function ProductPage() {
                 style={{ width: "100%", maxWidth: "300px" }}
               ></img>
             </div>
-          </div>
+          </div> */}
         </div>
         {/*====================================================== END PRODUCT IMAGES ========================================= */}
 
@@ -58,7 +78,7 @@ function ProductPage() {
                 fontWeight: "400",
               }}
             >
-              Product
+              {(product && product.name) || "Product"}
             </h1>
             <p
               style={{
@@ -67,10 +87,7 @@ function ProductPage() {
                 fontSize: "1.2rem",
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              {(product && product.description) || "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat."}
             </p>
           </div>
           <div className="row">
@@ -82,7 +99,7 @@ function ProductPage() {
                   fontWeight: "400",
                 }}
               >
-                ₹ 200
+                ₹ {(product && product.price) || "200"}
               </h3>
             </div>
             <div className="col-md-1">

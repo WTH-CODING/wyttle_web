@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import ProductOnsale from "./Product/Product_onsale";
 
 const Onsale_section = () => {
+
+  const[products,setProducts] = useState([])
+  useEffect(()=>{
+    getProducts();
+  },[])
+  const getProducts = () => {
+    fetch('http://20.84.89.186/api/v1/product')
+  .then(response => response.json())
+  .then(data => setProducts(data));
+
+  console.log("getProducts Function Called")
+  }
   return (
     <>
       <div
@@ -30,9 +42,14 @@ const Onsale_section = () => {
             alignItems: "baseline",
           }}
         >
-          <div className="col-md-3 mt-sm-5">
-            <ProductOnsale />
-          </div>
+          {products&& products.map((product,i)=>{
+            return(
+            <div className="col-md-3 mt-sm-5">
+              <ProductOnsale product={product} />
+            </div>
+            )
+          })}
+          
           <div className="col-md-3 mt-5">
             <ProductOnsale />
           </div>

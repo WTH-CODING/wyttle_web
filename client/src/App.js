@@ -20,7 +20,7 @@ function App() {
         <Navigation />
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/product/_id" exact component={ProductPage} />
+          <Route path="/product/:pid" exact component={ProductPage} />
           <Route path="/leaderboard" exact component={FeedBack} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Register} />
