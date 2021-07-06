@@ -32,7 +32,9 @@ function NavigationBar() {
             <Link to="/product/_id">
               <button className="nbtn">Shop</button>
             </Link>
+            <Link to="/contactus">
             <button className="nbtn">Contact Us</button>
+            </Link>
             <Link to="/leaderboard">
               <button className="nbtn">Feedback</button>
             </Link>

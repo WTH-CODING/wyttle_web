@@ -10,6 +10,7 @@ import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import CartPage from "./Components/Pages/CartPage";
 import PointRedeemPage from "./Components/Pages/PointRedeemPage";
+import ContactUs from "./Components/ContactUs/ContactUs";
 
 import UserProfilePage from "./Components/Pages/UserProfilePage";
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/cart" exact component={CartPage} />
           <Route path="/redeem" exact component={PointRedeemPage} />
           <Route path="/user_profile" exact component={UserProfilePage} />
+          <Route path="/contactus" exact component={ContactUs} />
         </Switch>
         <Footer />
       </BrowserRouter>
