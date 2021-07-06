@@ -114,15 +114,9 @@ function CartPage(props) {
             </div>
             <hr style={{ height: "3px" }}></hr>
           </div>
-          {Object.keys(cartItems).map((key, index) => (
-            <CartItemCard
-              key={index}
-              cartItem={cartItems[key]}
-              onQuantityInc={onQuantityIncrement}
-              onQuantityDec={onQuantityDecrement}
-              onRemoveCartItem={onRemoveCartItem}
-            />
-          ))}
+          <CartItemCard />
+          <CartItemCard />
+          <CartItemCard />
           <div className="row">
             <div className="col-md-10">
               <hr></hr>
