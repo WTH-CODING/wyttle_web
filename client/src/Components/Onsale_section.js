@@ -45,20 +45,11 @@ const Onsale_section = () => {
           {products&& products.map((product,i)=>{
             return(
             <div className="col-md-3 mt-sm-5">
-              <ProductOnsale product={product} />
+              <ProductOnsale key={i} product={product} />
             </div>
             )
           })}
           
-          <div className="col-md-3 mt-5">
-            <ProductOnsale />
-          </div>
-          <div className="col-md-3 mt-5">
-            <ProductOnsale />
-          </div>
-          <div className="col-md-3 mt-5">
-            <ProductOnsale />
-          </div>
         </div>
       </div>
     </>
