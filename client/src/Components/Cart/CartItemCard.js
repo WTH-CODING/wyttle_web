@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import p1 from "../../Assets/p1.jpg";
 
 function CartItemCard(props) {
-  const [qty, setQty] = useState(props.cartItem.qty);
+  //   const [qty, setQty] = useState(props.cartItem.qty);
 
-  const { _id, name, price, img } = props.cartItem;
+  //   const { _id, name, price, img } = props.cartItem;
 
-  const onQuantityIncrement = () => {
-    setQty(qty + 1);
-    props.onQuantityInc(_id, qty + 1);
-  };
+  //   const onQuantityIncrement = () => {
+  //     setQty(qty + 1);
+  //     props.onQuantityInc(_id, qty + 1);
+  //   };
 
-  const onQuantityDecrement = () => {
-    if (qty <= 1) return;
-    setQty(qty - 1);
-    props.onQuantityDec(_id, qty - 1);
-  };
+  //   const onQuantityDecrement = () => {
+  //     if (qty <= 1) return;
+  //     setQty(qty - 1);
+  //     props.onQuantityDec(_id, qty - 1);
+  //   };
 
   return (
     <div>
@@ -25,7 +25,7 @@ function CartItemCard(props) {
             <div className="col-md-4" style={{ alignSelf: "center" }}>
               <img
                 alt="p1"
-                src={img}
+                src={p1}
                 style={{
                   height: "100%",
                   width: "100%",
@@ -41,7 +41,7 @@ function CartItemCard(props) {
                   color: "#000000",
                 }}
               >
-                {name}
+                Product
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ function CartItemCard(props) {
               fontSize: "1.2rem",
             }}
           >
-            {price}
+            ₹ 100
           </p>
         </div>
         <div className="col-md-2" style={{ alignSelf: "center" }}>
@@ -65,10 +65,7 @@ function CartItemCard(props) {
               className="col-md-2 text-center"
               style={{ alignSelf: "center" }}
             >
-              <span
-                onClick={onQuantityIncrement}
-                style={{ fontFamily: "Poppins", fontWeight: "500" }}
-              >
+              <span style={{ fontFamily: "Poppins", fontWeight: "500" }}>
                 +
               </span>
             </div>
@@ -86,10 +83,7 @@ function CartItemCard(props) {
               className="col-md-2 text-center"
               style={{ alignSelf: "center", padding: "0" }}
             >
-              <span
-                onClick={onQuantityDecrement}
-                style={{ fontFamily: "Poppins", fontWeight: "700" }}
-              >
+              <span style={{ fontFamily: "Poppins", fontWeight: "700" }}>
                 -
               </span>
             </div>
