@@ -4,6 +4,7 @@ import ProductTopReviewCard from "../Product/ProductTopReviewCard";
 import ProuctCardSmall from "../Product/ProuctCardSmall";
 import ProductFeedbackCard from "../Product/ProductFeedbackCard";
 import ProgressBar from "../ProgressBar";
+import AddReviewModal from '../AddReviewModal';
 
 function ProductPage() {
   return (
@@ -374,10 +375,12 @@ function ProductPage() {
                   fontFamily: "Roboto",
                   fontWeight: "700",
                 }}
+                data-bs-toggle="modal" data-bs-target="#reviewModal"
               >
                 {" "}
                 <i className="fas fa-plus"></i> &nbsp;&nbsp;Add Feedback
               </button>
+              <AddReviewModal />
             </div>
           </div>
         </div>
