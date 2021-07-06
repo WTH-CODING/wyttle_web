@@ -29,9 +29,7 @@ function NavigationBar() {
                 Home
               </button>
             </Link>
-            <Link to="/product/_id">
               <button className="nbtn">Shop</button>
-            </Link>
             <Link to="/contactus">
             <button className="nbtn">Contact Us</button>
             </Link>
