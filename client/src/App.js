@@ -11,6 +11,7 @@ import Register from "./Components/User/Register";
 import CartPage from "./Components/Pages/CartPage";
 import PointRedeemPage from "./Components/Pages/PointRedeemPage";
 import CartProvider from "./store/CartProvider";
+import UserProfilePage from "./Components/Pages/UserProfilePage";
 function App() {
   return (
     <div>
@@ -25,6 +26,7 @@ function App() {
             <Route path="/signup" exact component={Register} />
             <Route path="/cart" exact component={CartPage} />
             <Route path="/redeem" exact component={PointRedeemPage} />
+            <Route path="/user_profile" exact component={UserProfilePage} />
           </Switch>
           <Footer />
         </BrowserRouter>
